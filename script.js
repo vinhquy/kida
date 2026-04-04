@@ -1,5 +1,5 @@
 /* KIDA Investment — Performance Chart
-   Reads data/performance.json → renders Chart.js line chart (time scale)
+   Reads data/performance.json → renders Chart.js line chart
    To update monthly: add 1 line to performance.json */
 
 async function loadData() {
@@ -8,9 +8,8 @@ async function loadData() {
   return res.json();
 }
 
-function fmtDate(ts) {
-  /* ts có thể là timestamp (ms) hoặc ISO string */
-  const d = (typeof ts === 'number') ? new Date(ts) : new Date(ts + 'T00:00:00');
+function fmt(iso) {
+  const d = new Date(iso + 'T00:00:00');
   return `T${d.getMonth() + 1}/${d.getFullYear()}`;
 }
 
@@ -27,14 +26,17 @@ function buildChart(data) {
   grdVN.addColorStop(0,   'rgba(100, 116, 139, 0.18)');
   grdVN.addColorStop(1,   'rgba(100, 116, 139, 0.01)');
 
+  /* Tính % tổng sinh lời để hiển thị tooltip */
+  const base = data[0];
+
   new Chart(ctx, {
     type: 'line',
     data: {
-      /* Time scale: dùng {x: ISO-date, y: value} thay vì labels array */
+      labels: data.map(x => fmt(x.date)),
       datasets: [
         {
           label: 'KIDA Portfolio',
-          data: data.map(x => ({ x: x.date, y: x.kida })),
+          data: data.map(x => x.kida),
           borderColor: '#1d4ed8',
           backgroundColor: grd,
           fill: true,
@@ -50,7 +52,7 @@ function buildChart(data) {
         },
         {
           label: 'VN-Index',
-          data: data.map(x => ({ x: x.date, y: x.vnindex })),
+          data: data.map(x => x.vnindex),
           borderColor: '#64748b',
           backgroundColor: grdVN,
           fill: true,
@@ -82,17 +84,17 @@ function buildChart(data) {
           titleFont: { size: 13, weight: '700' },
           bodyFont: { size: 13 },
           callbacks: {
-            title: (items) => fmtDate(items[0].parsed.x),
+            title: (items) => items[0].label,
             label: (item) => {
-              const val = item.raw.y;
+              const val = item.raw;
               const pct = ((val - 100) / 100 * 100).toFixed(1);
               const sign = pct >= 0 ? '+' : '';
               return ` ${item.dataset.label}: ${val.toLocaleString('vi-VN')} triệu  (${sign}${pct}%)`;
             },
             afterBody: (items) => {
               if (items.length < 2) return '';
-              const kida = items.find(i => i.dataset.label === 'KIDA Portfolio')?.raw?.y;
-              const vn   = items.find(i => i.dataset.label === 'VN-Index')?.raw?.y;
+              const kida = items.find(i => i.dataset.label === 'KIDA Portfolio')?.raw;
+              const vn   = items.find(i => i.dataset.label === 'VN-Index')?.raw;
               if (!kida || !vn) return '';
               const diff = (kida - vn).toFixed(1);
               const sign = diff >= 0 ? '+' : '';
@@ -103,32 +105,11 @@ function buildChart(data) {
       },
       scales: {
         x: {
-          type: 'time',
-          time: {
-            unit: 'month',
-            tooltipFormat: 'yyyy-MM-dd',
-          },
-          /* Cho phép Chart.js sinh đủ tick hàng tháng trước khi lọc */
           ticks: {
             color: '#5A6A82',
+            maxTicksLimit: 14,
             font: { size: 11 },
             maxRotation: 45,
-            maxTicksLimit: 200, /* đủ lớn để giữ hết tick trước afterBuildTicks */
-            callback: (value) => {
-              const d = new Date(value);
-              const m = d.getMonth() + 1; /* 1-based */
-              /* Chỉ hiển thị nhãn T12 (mốc chốt NAV hàng năm)
-                 Đổi thành: m === 6 || m === 12  nếu muốn thêm T6 */
-              if (m === 12) return `T12/${d.getFullYear()}`;
-              return null;
-            }
-          },
-          /* afterBuildTicks: lọc tick marks — chỉ giữ T12 hàng năm */
-          afterBuildTicks: (axis) => {
-            axis.ticks = axis.ticks.filter(tick => {
-              const m = new Date(tick.value).getMonth() + 1;
-              return m === 12; /* T12 only — đổi thành: m === 6 || m === 12 để thêm T6 */
-            });
           },
           grid: { color: '#EEE9DC', lineWidth: 1 },
           border: { color: '#DDD8CC' }
