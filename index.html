@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KIDA Investment — Quản lý tài sản & Hợp tác đầu tư</title>
+  <meta name="description" content="KIDA Investment — tư vấn và hợp tác đầu tư chứng khoán dài hạn. Minh bạch, kỷ luật, gắn kết lợi ích với nhà đầu tư. Không phí quản lý." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="logo-link">
+        <!-- Swap img src với logo thật khi có -->
+        <img src="./logo.png" alt="KIDA Investment" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <span class="logo-fallback">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="8" fill="#C9A227"/>
+            <path d="M10 26V10h4v6.5l6-6.5h5l-7 7.5 7.5 8.5h-5.2l-6.3-7.2V26H10z" fill="#0D1F3C"/>
+          </svg>
+          <span class="logo-text">KIDA<span>Investment</span></span>
+        </span>
+      </a>
+      <nav class="main-nav">
+        <a href="#hieu-qua">Hiệu quả</a>
+        <a href="#dich-vu">Dịch vụ</a>
+        <a href="#loi-the">Lợi thế</a>
+        <a href="#triet-ly">Triết lý</a>
+        <a href="#quy-trinh">Quy trình</a>
+        <a href="#lien-he" class="nav-cta">Liên hệ</a>
+      </nav>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">CÔNG TY TNHH ĐẦU TƯ KIDA · MST: 0107854893</p>
+          <h1>Đồng hành trên hành trình <em>tăng trưởng</em> tài sản dài hạn</h1>
+          <p class="hero-lead">Hợp tác đầu tư chứng khoán trên tài khoản của bạn — minh bạch, kỷ luật, và gắn kết lợi ích tuyệt đối. Không phí quản lý. Phí dịch vụ chỉ phát sinh khi bạn có lợi nhuận thực sự.</p>
+          <div class="hero-actions">
+            <a href="#lien-he" class="btn btn-primary">Tư vấn miễn phí</a>
+            <a href="#hieu-qua" class="btn btn-outline">Xem hiệu quả đầu tư</a>
+          </div>
+        </div>
+        <div class="hero-quote-card">
+          <div class="quote-mark">"</div>
+          <blockquote>Lãi suất kép là kỳ quan thứ 8 của nhân loại. Ai hiểu nó sẽ kiếm được tiền nhờ nó; những ai không hiểu sẽ trả giá cho nó.</blockquote>
+          <cite>— Albert Einstein</cite>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-num">+473%</span>
+          <span class="stat-label">Tổng sinh lời KIDA (06/2018 – 12/2025)</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">+86%</span>
+          <span class="stat-label">Tổng tăng trưởng VN-Index cùng kỳ</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">10 năm</span>
+          <span class="stat-label">Kinh nghiệm kiểm toán & tài chính</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">Khách hàng đang hợp tác</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HIỆU QUẢ ĐẦU TƯ ═══ -->
+  <section id="hieu-qua" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Track Record</p>
+        <h2>Hiệu quả đầu tư thực tế</h2>
+        <p class="section-desc">So sánh danh mục KIDA và VN-Index từ tháng 06/2018. Tính trên vốn gốc 100 triệu đồng.</p>
+      </div>
+      <div class="chart-wrapper">
+        <div class="chart-header">
+          <div class="chart-legend">
+            <span class="legend-kida">● KIDA Portfolio</span>
+            <span class="legend-vn">● VN-Index</span>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="performanceChart"></canvas>
+        </div>
+      </div>
+      <p class="chart-note">(*) Mức sinh lời bình quân gia quyền các tài khoản KIDA quản lý. Số liệu được cập nhật định kỳ hàng tháng.</p>
+    </div>
+  </section>
+
+  <!-- ═══ DỊCH VỤ ═══ -->
+  <section id="dich-vu" class="section section-dark">
+    <div class="container">
+      <div class="section-header light">
+        <p class="section-eyebrow">Dịch vụ</p>
+        <h2>Hợp tác đầu tư như thế nào?</h2>
+        <p class="section-desc">Toàn bộ hoạt động đầu tư diễn ra trên chính tài khoản chứng khoán của bạn.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Tài khoản của bạn</h3>
+          <p>Chúng tôi thực hiện giao dịch trên tài khoản chứng khoán của chính bạn. Chỉ bạn mới có quyền rút tiền — không ai ngoài bạn có thể rút tiền khỏi tài khoản.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Minh bạch 24/7</h3>
+          <p>Bạn có thể theo dõi toàn bộ lịch sử giao dịch, danh mục hiện tại và kết quả lợi nhuận qua ứng dụng của công ty chứng khoán — bất cứ lúc nào bạn muốn.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Không phí quản lý</h3>
+          <p>Không thu phí thường niên như các quỹ đầu tư truyền thống (1.5–2%/năm). Phí dịch vụ chỉ phát sinh khi kết quả đầu tư vượt cả lãi tiết kiệm và VN-Index.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Linh hoạt vốn</h3>
+          <p>Rút một phần hoặc toàn bộ vốn bất cứ khi nào bạn cần. Tăng thêm vốn khi có nguồn tiền mới. Không ràng buộc kỳ hạn cố định.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LỢI THẾ ═══ -->
+  <section id="loi-the" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Tại sao chọn KIDA?</p>
+        <h2>Bốn lợi thế cốt lõi</h2>
+      </div>
+      <div class="advantage-grid">
+        <div class="advantage-item">
+          <span class="adv-num">01</span>
+          <div>
+            <h3>Lợi thế của quy mô nhỏ</h3>
+            <p>Quy mô vốn nhỏ cho phép KIDA đầu tư linh hoạt vào nhiều cơ hội mà các quỹ lớn không thể tiếp cận. Đó là lý do chúng tôi chủ động giới hạn số lượng khách hàng.</p>
+          </div>
+        </div>
+        <div class="advantage-item">
+          <span class="adv-num">02</span>
+          <div>
+            <h3>Không phí quản lý</h3>
+            <p>Quỹ đầu tư truyền thống thu phí ngay cả khi thua lỗ. KIDA không thu bất kỳ phí quản lý nào — bạn không trả một đồng nào nếu chúng tôi không đạt mục tiêu đề ra.</p>
+          </div>
+        </div>
+        <div class="advantage-item">
+          <span class="adv-num">03</span>
+          <div>
+            <h3>Mục tiêu rõ ràng</h3>
+            <p>Mỗi năm, chúng tôi đặt mục tiêu cụ thể: sinh lời vượt <strong>lãi tiết kiệm ngân hàng</strong> và vượt <strong>mức tăng trưởng VN-Index</strong>.</p>
+          </div>
+        </div>
+        <div class="advantage-item">
+          <span class="adv-num">04</span>
+          <div>
+            <h3>Gắn kết lợi ích</h3>
+            <p>Phí dịch vụ 25% phần lãi vượt lãi tiết kiệm — chỉ tính khi đồng thời vượt cả lãi tiết kiệm <em>và</em> VN-Index. Lợi ích của chúng tôi và của bạn được gắn kết về mặt tài chính — không có chỗ cho xung đột lợi ích.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kinh nghiệm -->
+      <div class="experience-block">
+        <div class="exp-text">
+          <p class="section-eyebrow">Kinh nghiệm</p>
+          <h3>Nền tảng vững chắc từ kiểm toán & tài chính</h3>
+          <p>Nhiều năm kinh nghiệm trong lĩnh vực kiểm toán, tài chính và đầu tư giúp chúng tôi đọc báo cáo tài chính sâu hơn, nhận diện rủi ro sớm hơn, và đưa ra quyết định kỷ luật hơn so với nhà đầu tư thông thường.</p>
+        </div>
+        <div class="exp-bars">
+          <div class="exp-bar-item">
+            <div class="exp-bar-label"><span>Kiểm toán & Tài chính</span><strong>10 năm</strong></div>
+            <div class="progress-track"><div class="progress-fill" style="width:85%"></div></div>
+          </div>
+          <div class="exp-bar-item">
+            <div class="exp-bar-label"><span>Đầu tư chứng khoán</span><strong>8 năm</strong></div>
+            <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRIẾT LÝ ĐẦU TƯ ═══ -->
+  <section id="triet-ly" class="section section-gold">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="phil-left">
+          <p class="section-eyebrow light">Triết lý</p>
+          <h2>Đầu tư giá trị — kỷ luật kiến tạo tài sản bền vững</h2>
+          <p>Chúng tôi chỉ đầu tư vào những doanh nghiệp mình am hiểu và có thể đánh giá hợp lý về triển vọng dài hạn.</p>
+          <div class="phil-principles">
+            <div class="phil-item">
+              <div class="phil-dot"></div>
+              <p><strong>Lĩnh vực am hiểu:</strong> Chỉ đầu tư vào doanh nghiệp có mô hình kinh doanh rõ ràng, tránh những lĩnh vực quá phức tạp.</p>
+            </div>
+            <div class="phil-item">
+              <div class="phil-dot"></div>
+              <p><strong>Không phân tích kỹ thuật:</strong> Chúng tôi tin rằng giá trị nội tại của doanh nghiệp — chứ không phải biến động giá ngắn hạn — mới là nền tảng của lợi nhuận dài hạn bền vững.</p>
+            </div>
+            <div class="phil-item">
+              <div class="phil-dot"></div>
+              <p><strong>Không đầu cơ ngắn hạn:</strong> Thay vì tìm cách kiếm lời từ biến động giá ngắn hạn, chúng tôi kiên nhẫn chờ thị trường công nhận giá trị thực của những doanh nghiệp tốt.</p>
+            </div>
+            <div class="phil-item">
+              <div class="phil-dot"></div>
+              <p><strong>Kiên định với giá trị:</strong> Kỷ luật giữ vững nguyên tắc khi thị trường biến động — đó là lợi thế thực sự mà chúng tôi mang lại cho nhà đầu tư.</p>
+            </div>
+            <div class="phil-item">
+              <div class="phil-dot"></div>
+              <p><strong>Mục tiêu vượt thị trường:</strong> Ngay cả năm thua lỗ, nếu mức lỗ thấp hơn đáng kể so với VN-Index, đó vẫn là một thành công — bởi tài sản của bạn bị ảnh hưởng ít hơn đáng kể so với mặt bằng thị trường chung.</p>
+            </div>
+          </div>
+        </div>
+        <div class="phil-right">
+          <div class="phil-card">
+            <div class="quote-icon">❝</div>
+            <h3>Chúng tôi gắn kết lợi ích với khách hàng</h3>
+            <ul class="commitment-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Tất cả điều khoản hợp tác đảm bảo lợi ích của chúng tôi và của bạn luôn song hành
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Phần lớn tài sản chúng tôi đang quản lý là tài sản của chính gia đình và bạn bè thân thiết — những người chúng tôi không thể để thất vọng
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                Sẽ chủ động dừng hoạt động nếu liên tục không tạo được giá trị gia tăng
+              </li>
+            </ul>
+            <div class="founder-sig">
+              <div class="founder-avatar">PQ</div>
+              <div>
+                <strong>Phí Vĩnh Quý</strong>
+                <span>Nhà sáng lập, KIDA Investment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ QUY TRÌNH HỢP TÁC ═══ -->
+  <section id="quy-trinh" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Quy trình</p>
+        <h2>Bắt đầu hợp tác như thế nào?</h2>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Trao đổi nhu cầu</h3>
+            <p>Chúng tôi lắng nghe mục tiêu, kỳ vọng và khả năng chịu rủi ro của bạn để đánh giá thành thật liệu KIDA có phải lựa chọn phù hợp nhất cho bạn.</p>
+          </div>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Ký thỏa thuận</h3>
+            <p>Chúng tôi ký hợp đồng hợp tác đầu tư, ghi rõ mục tiêu sinh lời, cơ chế tính phí và điều khoản chia sẻ rủi ro của cả hai bên.</p>
+          </div>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Triển khai đầu tư</h3>
+            <p>KIDA thực hiện công việc đầu tư. Bạn giám sát toàn bộ hoạt động 24/7 qua ứng dụng chứng khoán. Phí dịch vụ chốt vào ngày 31/12 hàng năm.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital requirements -->
+      <div class="capital-info">
+        <div class="capital-card">
+          <h3>Cần bao nhiêu vốn?</h3>
+          <p>KIDA hợp tác với khách hàng có <strong>vốn từ 500 triệu đồng</strong>. Ngưỡng tối thiểu này giúp chúng tôi xây dựng danh mục đủ đa dạng và linh hoạt để đạt hiệu quả tối ưu.</p>
+        </div>
+        <div class="capital-card">
+          <h3>Phí dịch vụ tính thế nào?</h3>
+          <p><strong>25% phần lãi vượt lãi tiết kiệm</strong> — chỉ tính khi đồng thời vượt cả lãi tiết kiệm và VN-Index. Với hợp đồng bắt đầu giữa năm, lãi suất cơ sở được tính theo số tháng đầu tư thực tế.</p>
+        </div>
+        <div class="capital-card">
+          <h3>Điều khoản chia lỗ?</h3>
+          <p>Hợp đồng trên <strong>12 tháng</strong>: KIDA cam kết chia lỗ với nhà đầu tư nếu danh mục thua lỗ. Nếu không đạt cả hai mục tiêu, KIDA sẽ không thu bất kỳ khoản phí dịch vụ nào.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="section section-faq">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Câu hỏi thường gặp</p>
+        <h2>Bạn đang thắc mắc điều gì?</h2>
+      </div>
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary>Hình thức hợp tác cụ thể thế nào?</summary>
+          <p>KIDA ra quyết định đầu tư và thực hiện giao dịch mua/bán trên tài khoản chứng khoán của khách hàng. Khách hàng giám sát 24/7. Chỉ chủ tài khoản mới có thể rút tiền, đảm bảo vốn không bị dùng vào mục đích khác.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Tôi có thể rút vốn khi nào?</summary>
+          <p>Bất cứ lúc nào. Chủ tài sản luôn là người quyết định cuối cùng. Tuy nhiên, rút vốn đột ngột trong ngắn hạn có thể ảnh hưởng đến lợi nhuận kỳ vọng.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Nếu năm đó không đạt mục tiêu thì sao?</summary>
+          <p>Khoản thiếu hụt so với lãi suất cơ sở sẽ được cộng dồn sang năm tiếp theo. Ví dụ: nếu năm nay sinh lời 3% trong khi lãi tiết kiệm là 5%, thì 2% thiếu hụt này được tính vào ngưỡng mục tiêu của năm sau — đảm bảo bạn luôn được bù đắp đầy đủ trước khi KIDA thu bất kỳ phí nào.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Tôi có phải chịu phí nào khác không?</summary>
+          <p>Không. Ngoài phí dịch vụ hiệu suất (25% lãi vượt cơ sở khi đạt cả hai mục tiêu), không có bất kỳ phí quản lý, phí tư vấn, hay phí nào khác.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Điều gì đảm bảo tiền của tôi an toàn?</summary>
+          <p>Tiền nằm trong tài khoản chứng khoán mang tên bạn tại công ty chứng khoán được cấp phép. Chỉ bạn mới có quyền rút tiền. KIDA chỉ có quyền đặt lệnh giao dịch, không thể chuyển tiền ra ngoài.</p>
+        </details>
+        <details class="faq-item">
+          <summary>KIDA có nhận thêm khách hàng không?</summary>
+          <p>Quy mô nhỏ chính là lợi thế cạnh tranh của KIDA. Vì vậy, chúng tôi chủ động giới hạn số lượng khách hàng để đảm bảo mỗi danh mục đều được quản lý với sự tập trung tối đa.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIÊN HỆ ═══ -->
+  <section id="lien-he" class="section section-contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-eyebrow light">Liên hệ</p>
+          <h2>Bắt đầu cuộc trò chuyện</h2>
+          <p>Nếu bạn đang tìm kiếm đối tác đầu tư dài hạn, minh bạch và có kỷ luật — hãy liên hệ để cùng tìm hiểu xem KIDA có phải lựa chọn phù hợp với mục tiêu tài chính của bạn.</p>
+          <div class="contact-details">
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>
+              <a href="tel:0941067790">0941.06.77.90</a>
+            </div>
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <a href="https://zalo.me/0941067790" target="_blank" rel="noopener">Nhắn Zalo: 0941.06.77.90</a>
+            </div>
+            <div class="contact-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Tầng 4, Toà nhà HUD3, 121-123 Tô Hiệu, P. Nguyễn Trãi, Q. Hà Đông, Hà Nội</span>
+            </div>
+          </div>
+          <a href="https://zalo.me/0941067790" target="_blank" rel="noopener" class="btn btn-gold">Nhắn Zalo ngay →</a>
+        </div>
+        <div class="contact-card">
+          <h3>Tư vấn miễn phí</h3>
+          <p>Nhắn tin Zalo trực tiếp với nhà sáng lập để được tư vấn miễn phí và không ràng buộc.</p>
+          <div class="company-info">
+            <p><strong>CÔNG TY TNHH ĐẦU TƯ KIDA</strong></p>
+            <p>Mã số thuế: 0107854893</p>
+            <p>Email: <a href="mailto:info@kida.vn">info@kida.vn</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 CÔNG TY TNHH ĐẦU TƯ KIDA · MST: 0107854893</p>
+      <p>Tư vấn & hợp tác đầu tư chứng khoán dài hạn</p>
+    </div>
+  </footer>
+
+  <a href="#top" class="back-to-top" aria-label="Lên đầu trang">↑</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <!-- Date adapter cho time scale (bao gồm date-fns) -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
